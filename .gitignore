@@ -3,3 +3,4 @@ __pycache__
 .ide
 vendor
 internal
+.venv
