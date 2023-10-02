@@ -1,3 +1,4 @@
+import pytest
 from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
@@ -9,14 +10,19 @@ from enums.Enums import ApplicationUrl
 from utils.faker import Randomizer
 
 
-def test_buy_product_and_checkout(page: Page):
+@pytest.fixture(autouse=True)
+def setup(page: Page):
     login_page = LoginPage(page)
     cart_page = CartPage(page)
     product_page = ProductPage(page)
     checkout_overview = CheckoutOverview(page)
     checkout_step_one = CheckoutStepOnePage(page)
     order_completion = OrderCompletion(page)
+    yield login_page, cart_page, product_page, checkout_overview, checkout_step_one, order_completion
 
+
+def test_buy_product_and_checkout(setup):
+    login_page, cart_page, product_page, checkout_overview, checkout_step_one, order_completion = setup
     login_page.goto(ApplicationUrl.SAUCE_DEMO)
     login_page.login_to_sauce_demo()
 
@@ -24,7 +30,7 @@ def test_buy_product_and_checkout(page: Page):
     assert "remove" in remove_btn
     remove_btn2 = product_page.choose_product_from_list("Sauce Labs Backpack")
     assert "remove" in remove_btn2
-    
+
     items_count = product_page.get_shopping_cart_items()
     assert items_count == "2"
     product_page.click_on_cart_basket()
