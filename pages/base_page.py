@@ -1,5 +1,6 @@
 from playwright.sync_api import Page
 from enums.Enums import ApplicationUrl
+from enums.navigation_enums import NavigationEnum
 
 
 class BasePage:
