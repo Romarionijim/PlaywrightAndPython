@@ -10,3 +10,4 @@ reports/
 report.html
 .coverage
 htmlcov/
+main.py
