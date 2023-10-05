@@ -5,7 +5,7 @@ from enums.Enums import ApplicationUrl
 import pytest
 
 
-def test_choose_product(page:Page):
+def test_choose_product(page: Page):
     login_page = LoginPage(page)
     product_page = ProductPage(page)
 
@@ -17,4 +17,3 @@ def test_choose_product(page:Page):
     product_page.choose_product_from_list(prod)
     items = product_page.get_shopping_cart_items()
     assert items == "1"
-    expect(url)

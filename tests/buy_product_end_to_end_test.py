@@ -10,8 +10,8 @@ from enums.Enums import ApplicationUrl
 from utils.faker import Randomizer
 
 
-@pytest.fixture(autouse=True)
-def setup(page: Page):
+@pytest.fixture()
+def init_objects(page: Page):
     login_page = LoginPage(page)
     cart_page = CartPage(page)
     product_page = ProductPage(page)
@@ -21,8 +21,9 @@ def setup(page: Page):
     yield login_page, cart_page, product_page, checkout_overview, checkout_step_one, order_completion
 
 
-def test_buy_product_and_checkout(setup):
-    login_page, cart_page, product_page, checkout_overview, checkout_step_one, order_completion = setup
+@pytest.mark.SANITY
+def test_buy_product_and_checkout(init_objects):
+    login_page, cart_page, product_page, checkout_overview, checkout_step_one, order_completion = init_objects
     login_page.goto(ApplicationUrl.SAUCE_DEMO)
     login_page.login_to_sauce_demo()
 
