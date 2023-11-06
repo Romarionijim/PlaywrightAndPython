@@ -4,7 +4,7 @@ from playwright.sync_api import Page, expect
 from enums.Enums import ApplicationUrl
 import pytest
 
-
+@pytest.mark.PRODUCT
 def test_choose_product(page: Page):
     login_page = LoginPage(page)
     product_page = ProductPage(page)

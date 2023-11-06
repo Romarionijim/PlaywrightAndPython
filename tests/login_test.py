@@ -11,7 +11,7 @@ def login_page(page: Page):
     print("Login sanity tests finished execution")
 
 
-@pytest.mark.SANITY
+@pytest.mark.LOGIN_SANITY
 def test_valid_login(login_page):
     login_page.goto(ApplicationUrl.SAUCE_DEMO)
     login_page.login_to_sauce_demo()
@@ -19,7 +19,7 @@ def test_valid_login(login_page):
     assert "inventory.html" in url
 
 
-@pytest.mark.SANITY
+@pytest.mark.LOGIN_SANITY
 def test_invalid_username_and_password(login_page):
     login_page.goto(ApplicationUrl.SAUCE_DEMO)
     error_message = login_page.login_to_sauce_demo("John", "Doe", error_message=True)
