@@ -33,5 +33,5 @@ jobs:
         if: always()
         with:
           name: report.html-${{ matrix.modules }}
-          path: tests/report.html
+          path: ./report.html
           retention-days: 30
