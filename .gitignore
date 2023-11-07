@@ -6,8 +6,9 @@ internal
 .venv
 html-report.html
 styles.css
-reports/
 report.html
 .coverage
 htmlcov/
 main.py
+archive/
+output.json

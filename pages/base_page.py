@@ -55,7 +55,7 @@ class BasePage:
             arr.append(cell_inner_text)
         return arr
 
-    def get_table_cell_value(self, locator, rowtext, columnname):
+    def get_table_cell_value(self, locator, rowtext: str, columnname: str):
         row = self.page.locator(locator, has_text=rowtext)
         column = self.get_column_index_by_name(locator, columnname)
         cell_value = row.locator('td').nth(column)

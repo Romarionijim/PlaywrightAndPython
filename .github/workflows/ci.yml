@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - "*"
-
 env:
   USER_NAME: ${{ secrets.USER_NAME }}
   PASSWORD: ${{ secrets.PASSWORD }}
-
 
 jobs:
   test_build:
@@ -35,5 +33,5 @@ jobs:
         if: always()
         with:
           name: report.html-${{ matrix.modules }}
-          path: tests/
+          path: tests/report.html
           retention-days: 30
